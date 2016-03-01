@@ -1,0 +1,145 @@
+.pricing-table-clean {
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+    margin-bottom: 55px;
+}
+
+.pricing-table-clean .plan {
+	display: inline-block;
+	position: relative;
+	margin-left: 18px;
+	margin-bottom: 100px;
+	border-radius: 2px;
+	background-color: #ffffff;
+	box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.08);
+	border: 1px solid #dcdcdc;
+	width: 220px;
+	padding: 30px 0;
+	box-sizing: border-box;
+}
+
+.pricing-table-clean .plan h2 .plan-name {
+	display: block;
+	color:  #5b6e8b;
+	font-size: 22px;
+	margin-bottom: 10px;
+}
+
+.pricing-table-clean .plan h2 .plan-price {
+	display: block;
+	color:  #dfa423;
+	font-size: 18px;
+	margin-bottom: 25px;
+}
+
+.pricing-table-clean .plan h2 {
+	position: relative;
+	bottom: 20px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+/* Dividing line */
+
+.pricing-table-clean .plan h2:after {
+	content: '';
+	position: absolute;
+	width: 33%;
+	height: 1px;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	background-color: #c6c6c6;
+}
+
+/* Plan characteristics */
+
+.pricing-table-clean .plan p {
+	text-align: left;
+	margin: 0 0 11px 25%;
+}
+
+.pricing-table-clean .plan p span {
+	color: #6C6B6B;
+	font-size: 13px;
+	line-height: 1;
+	font-weight: bold;
+	display: inline-block;
+	width: 55px;
+}
+
+.pricing-table-clean .plan p strong {
+	color: #608BA1;
+	font-size: 18px;
+	line-height: 18px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* Order button */
+
+.pricing-table-clean .plan .plan-order {
+	margin: 50px 0 20px 0;
+}
+
+.pricing-table-clean .plan .plan-order a.order-a-plan {
+	border-radius: 2px;
+	color: #ffffff;
+	background-color: #efa154;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 13px 30px;
+	box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1);
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+.pricing-table-clean .plan .additional-information {
+	position: absolute;
+	bottom: -60px;
+	left: 0;
+	color:  #717d8f;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 18px;
+	padding: 0 20px;
+}
+
+/* Featured Plan */
+
+.pricing-table-clean .plan.featured {
+	border: 2px solid #a0c4dc;
+	padding: 40px 5px;
+	box-sizing: border-box;
+}
+
+.pricing-table-clean .plan.featured h2 .plan-name {
+	font-size: 26px;
+}
+
+.pricing-table-clean .plan.featured .popular-badge {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 80px;
+	height: 80px;
+	overflow: hidden;
+}
+
+.pricing-table-clean .plan.featured .popular-badge span{
+	position: absolute;
+	right: -27px;
+	top: 13px;
+	background-color: #6cc76a;
+	box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.09);
+	width: 105px;
+	height: 28px;
+	text-align: center;
+	line-height: 2.5;
+	color: #ffffff;
+	font-size: 11px;
+	font-weight: bold;
+
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}

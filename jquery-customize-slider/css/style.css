@@ -1,0 +1,398 @@
+@charset "utf-8";
+/*---------------------------------------
+    common css
+----------------------------------------*/
+html{overflow-y:scroll;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;}table{border-collapse:collapse;border-spacing:0;}caption,th{text-align:left;}q:before,q:after{content:'';}object,embed{vertical-align:top;}hr,legend{display:none;}h1,h2,h3,h4,h5,h6{font-size:100%;}img,abbr,acronym,fieldset{border:0;}ul li{list-style-type:none;}a,label{cursor:pointer;}img{vertical-align:bottom;margin:0;padding:0;}
+@font-face {
+  font-family: "Colab Light";
+  src: url('../font/colaborate_light_macroman/ColabLig-webfont.eot');
+  src: url('../font/colaborate_light_macroman/ColabLig-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../font/colaborate_light_macroman/ColabLig-webfont.woff') format('woff'),
+       url('../font/colaborate_light_macroman/ColabLig-webfont.ttf') format('truetype'),
+       url('../font/colaborate_light_macroman/ColabLig-webfont.svg#colaboratelightregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Colab Medium";
+  src: url('../font/colaborate_medium_macroman/ColabMed-webfont.eot');
+  src: url('../font/colaborate_medium_macroman/ColabMed-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../font/colaborate_medium_macroman/ColabMed-webfont.woff') format('woff'),
+       url('../font/colaborate_medium_macroman/ColabMed-webfont.ttf') format('truetype'),
+       url('../font/colaborate_medium_macroman/ColabMed-webfont.svg#colaborate-mediumregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Colab Thin";
+  src: url('../font/colaborate_thin_macroman/ColabThi-webfont.eot');
+  src: url('../font/colaborate_thin_macroman/ColabThi-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../font/colaborate_thin_macroman/ColabThi-webfont.woff') format('woff'),
+       url('../font/colaborate_thin_macroman/ColabThi-webfont.ttf') format('truetype'),
+       url('../font/colaborate_thin_macroman/ColabThi-webfont.svg#colaborate-thinregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Colab Regular";
+  src: url('../font/colaborate_regular_macroman/ColabReg-webfont.eot');
+  src: url('../font/colaborate_regular_macroman/ColabReg-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../font/colaborate_regular_macroman/ColabReg-webfont.woff') format('woff'),
+       url('../font/colaborate_regular_macroman/ColabReg-webfont.ttf') format('truetype'),
+       url('../font/colaborate_regular_macroman/ColabReg-webfont.svg#colaborate-regularregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Contra";
+  src: url('../font/contra_regular_macroman/contra-webfont.eot');
+  src: url('../font/contra_regular_macroman/contra-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../font/contra_regular_macroman/contra-webfont.woff') format('woff'),
+       url('../font/contra_regular_macroman/contra-webfont.ttf') format('truetype'),
+       url('../font/contra_regular_macroman/contra-webfont.svg#contraregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Contra Italic";
+  src: url('../font/contra_italic_macroman/contra-italic-webfont.eot');
+  src: url('../font/contra_italic_macroman/contra-italic-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../font/contra_italic_macroman/contra-italic-webfont.woff') format('woff'),
+       url('../font/contra_italic_macroman/contra-italic-webfont.ttf') format('truetype'),
+       url('../font/contra_italic_macroman/contra-italic-webfont.svg#contraitalic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-size: 12px;
+  color: #505050;
+  font-family: "Colab Light",arial;
+  position: relative;
+  background: #e7e8ea;
+  min-width: 1000px;
+}
+body:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 716px;
+  background: url(../img/share/bg-left_wrapper.jpg) repeat-x left top;
+}
+body:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 716px;
+  background: url(../img/share/bg-right_wrapper.jpg) repeat-x left top;
+}
+
+.clearfix:after {
+  content:".";display:block;visibility:hidden;height:0.1px;font-size:0.1em;line-height:0;clear:both;
+}
+a {
+  display: inline-block;
+  color: #828181;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+}
+input {
+  outline: none;
+}
+
+/*  #wrapper
+----------------------------------------*/
+#wrapper {
+  background: url(../img/share/bg-top.jpg) no-repeat center top;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.inner {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+/*  #header
+----------------------------------------*/
+#header {
+  margin: 38px 0;
+}
+#header .logo {
+  float: left;
+  margin-left: 12px;
+}
+#header .navigation {
+  float: left;
+  margin-left: 132px;
+  margin-top: 13px;
+}
+#header .navigation ul {
+  overflow: hidden;
+}
+#header .navigation li {
+  float: left;
+  margin-left: 8px;
+}
+#header .navigation a {
+  position: relative;
+  padding: 0 5px;
+  display: block;
+  height: 29px;
+  line-height: 29px;
+  color: #d7d7e3;
+  font-size: 17px;
+}
+#header .navigation a:hover {
+  color: #161628;
+  border-radius: 5px;
+  background: #fff;
+}
+
+/*  #footer
+----------------------------------------*/
+#footer {
+  background: #353546 url(../img/share/bg-footer.png) no-repeat center top;
+  padding: 1px 0 7px;
+}
+
+#footer .twitter_section {
+  position: relative;
+  display: table;
+  padding: 14px 0 5px;
+  margin: 0 30px;
+}
+#footer .twitter_section:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 946px;
+  height: 1px;
+  background: url(../img/share/bg-border_top.png) no-repeat center top;
+}
+#footer .twitter_section:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 946px;
+  height: 1px;
+  background: url(../img/share/bg-border_bottom.png) no-repeat center top;
+}
+#footer .twitter_section p {
+  display: table-cell;
+  vertical-align: middle;
+  color: #fff;
+}
+#footer .twitter_section p:first-child {
+  padding-right: 37px;
+}
+#footer .twitter_section span {
+  display: block;
+}
+#footer .twitter_section .note {
+  font-family: "Contra Italic";
+  text-align: right;
+  margin-right: 55px;
+  font-size: 15px;
+  opacity: 0.6;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+  filter: alpha(opacity=60);
+}
+#footer .twitter_section .txt {
+  font-family: "Contra";
+  margin-right: 120px;
+  line-height: 1.9;
+  font-size: 13px;
+  opacity: 0.47;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=47)";
+  filter: alpha(opacity=47);
+}
+
+#footer .bottom_section {
+  margin: 14px 30px 0;
+  overflow: hidden;
+  position: relative;
+}
+#footer .bottom_section h3 {
+  font-family: "Colab Light";
+  font-size: 25px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+#footer .bottom_section .content {
+  overflow: hidden;
+}
+
+#footer .newsletter {
+  float: left;
+  width: 360px;
+}
+#footer .newsletter .guide {
+  font-family: "Colab Light";
+  opacity: 0.55;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=55)";
+  filter: alpha(opacity=55);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 18px;
+}
+#footer .newsletter .email_input {
+  float: left;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjEyIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4xMiIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0.12) 0%, rgba(255,255,255,0.12) 100%);
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0.12) 0%,rgba(255,255,255,0.12) 100%);
+  background: linear-gradient(to bottom,  rgba(0,0,0,0.12) 0%,rgba(255,255,255,0.12) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f000000', endColorstr='#1fffffff',GradientType=0 );
+  padding: 1px;
+  border-radius: 4px;
+}
+#footer .newsletter input[type="text"] {
+  -webkit-box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,0.75);
+  box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,0.75);
+  font-family: "Colab Light";
+  width: 187px;
+  height: 26px;
+  font-size: 14px;
+  padding: 0 12px;
+  color: #fff;
+  background: #242439;
+  border: 0;
+  border-radius: 4px;
+}
+#footer .newsletter .btn_subscribe {
+  float: left;
+  margin-left: 15px;
+  padding-top: 1px;
+}
+#footer .newsletter input[type="submit"] {
+  font-family: "Colab Light";
+  height: 27px;
+  border: 0;
+  width: 85px;
+  font-size: 14px;
+  color: #363648;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+#footer .newsletter .social {
+  overflow: hidden;
+  margin-top: 19px;
+}
+#footer .social li {
+  float: left;
+  margin-left: 14px;
+}
+#footer .social li:first-child {
+  margin-left: 0;
+}
+
+#footer .bottom_section .left_area {
+  float: left;
+}
+
+#footer .contact {
+  width: 415px;
+  float: right;
+  position: relative;
+  z-index: 10;
+}
+#footer .contact .left_area {
+  float: left;
+}
+#footer .contact .txt_input {
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjEyIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4xMiIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0.12) 0%, rgba(255,255,255,0.12) 100%);
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0.12) 0%,rgba(255,255,255,0.12) 100%);
+  background: linear-gradient(to bottom,  rgba(0,0,0,0.12) 0%,rgba(255,255,255,0.12) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f000000', endColorstr='#1fffffff',GradientType=0 );
+  padding: 1px;
+  margin-top: 11px;
+  border-radius: 4px;
+}
+#footer .contact .txt_input.first {
+  margin-top: 0;
+}
+#footer .contact input[type="text"] {
+  -webkit-box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,0.75);
+  box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,0.75);
+  font-family: "Colab Light";
+  width: 187px;
+  height: 26px;
+  font-size: 14px;
+  padding: 0 12px;
+  color: #fff;
+  background: #242439;
+  border: 0;
+  border-radius: 4px;
+}
+#footer .contact .area_input {
+  float: left;
+  margin-left: 10px;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjEyIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4xMiIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0.12) 0%, rgba(255,255,255,0.12) 100%);
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0.12) 0%,rgba(255,255,255,0.12) 100%);
+  background: linear-gradient(to bottom,  rgba(0,0,0,0.12) 0%,rgba(255,255,255,0.12) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f000000', endColorstr='#1fffffff',GradientType=0 );
+  padding: 1px;
+  border-radius: 4px;
+  margin-bottom: 0;
+}
+#footer .contact textarea {
+  -webkit-box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,0.75);
+  box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,0.75);
+  background: #242439;
+  font-family: "Colab Light";
+  width: 182px;
+  height: 92px;
+  border: 0;
+  font-size: 14px;
+  padding: 6px 4px;
+  color: #fff;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  border-radius: 4px;
+  margin: 0;
+  display: block;
+}
+#footer .contact .btn_subscribe {
+  float: right;
+  margin: 16px 4px 0 0;
+}
+#footer .contact input[type="submit"] {
+  font-family: "Colab Light";
+  height: 27px;
+  border: 0;
+  width: 85px;
+  font-size: 14px;
+  color: #363648;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#footer .copyright {
+  position: absolute;
+  bottom: 2px;
+  width: 100%;
+  font-family: "Colab Light";
+  font-size: 14px;
+  text-align: center;
+  color: rgba(255,255,255,0.55);
+}

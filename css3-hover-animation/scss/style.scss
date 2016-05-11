@@ -28,7 +28,11 @@ p {
   width: 960px;
   margin: 0 auto;
 }
-#content {
+h2 {
+  width: 960px;
+  margin: 30px auto 10px;
+}
+@mixin inner {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-wrap: wrap;
@@ -36,6 +40,10 @@ p {
   width: 960px;
   margin: 0 auto;
   background-color: $lightgrey;
+}
+/*content*/
+.inner_content {
+  @include inner;
 }
 
 /*transition can contain property of css name such as all, transform, width*/
@@ -144,68 +152,47 @@ p {
   }
 }
 
-#photo {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-  width: 960px;
-  margin: 0 auto;
-  background-color: $lightgrey;
-  margin-top: 10px;
+/*photo*/
+.inner_photo {
+  @include inner;
 }
-@for $i from 4 through 6 {
+@for $i from 4 through 18 {
   .flex_item_#{$i} {
     background: $cornflowerblue;
     width: 200px;
     height: 200px;
     margin: 5px;
+    position: relative;
   }
 }
-@keyframes heartBeat {
-   0% {
-    transform: scale(none);
-    -webkit-transform: scale(none);
+@mixin initheart($scale) {
+  transform: scale($scale);
+  -webkit-transform: scale($scale);
+}
+@mixin setheart {
+  0% {
+    @include initheart(none);
   }
   20% {
-    transform: scale(1.2);
-    -webkit-transform: scale(1.2);
+    @include initheart(1.2);
   }
   30% {
-    transform: scale(1.05);
-    -webkit-transform: scale(1.05);
+    @include initheart(1.05);
   }
   45% {
-    transform: scale(1.25);
-    -webkit-transform: scale(1.25);
+    @include initheart(1.25);
   }
   100% {
-    transform: scale(none);
-    -webkit-transform: scale(none);
+    @include initheart(none);
   }
 }
-@-webkit-keyframes heartBeat {
-   0% {
-    transform: scale(none);
-    -webkit-transform: scale(none);
-  }
-  20% {
-    transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-  }
-  30% {
-    transform: scale(1.05);
-    -webkit-transform: scale(1.05);
-  }
-  45% {
-    transform: scale(1.25);
-    -webkit-transform: scale(1.25);
-  }
-  100% {
-    transform: scale(none);
-    -webkit-transform: scale(none);
-  }
+@keyframes heartanimate {
+  @include setheart;
 }
+@-webkit-keyframes heartanimate {
+  @include setheart;
+}
+
 .heart {
   position: relative;
   top: 50px;
@@ -224,7 +211,7 @@ p {
   height: 100px;
   position: relative;
   &:hover {
-    animation: heartBeat 1s ease-in-out 1s infinite;
+    animation: heartanimate 1s ease-in-out 1s infinite;
   }
   .left_heart {
     display: block;
@@ -252,6 +239,53 @@ p {
     overflow: hidden;
     z-index: 10;
   }
+}
+
+/*animation sun, cloud*/
+@mixin initsun($pos) {
+  transform: translateY($pos);
+  -webkit-transform: translateY($pos);
+}
+@mixin setsun {
+  0% {
+    @include initsun(0px);
+  }
+  100% {
+    @include initsun(190px);
+    box-shadow: none;
+  }
+}
+@keyframes down {
+  @include setsun;
+}
+@-webkit-keyframes down {
+  @include setsun;
+}
+
+@mixin initcloud($posX, $opa) {
+  transform: $posX;
+  -webkit-transform: $posX;
+  opacity: $opa;
+}
+@mixin setcloud {
+  0% {
+    @include initcloud(translateX(0px), 0);
+  }
+  20% {
+    @include initcloud(translateX(60px), 1);
+  }
+  90% {
+    @include initcloud(translateX(180px), 1);
+  }
+  100% {
+    @include initcloud(translateX(200px), 0);
+  }
+}
+@keyframes slide {
+  @include setcloud;
+}
+@-webkit-keyframes slide {
+  @include setcloud;
 }
 .scene {
   width: 100%;
@@ -286,13 +320,303 @@ p {
     display: block;
     background: $gold;
     position: absolute;
-    bottom: 25px;
+    top: 50px;
     left: 75px;
     text-indent: -999px;
     border-radius: 25px;
+    box-shadow: 0 0 50px 5px #ffd700;
+  }
+  .cloud {
+    display: block;
+    background: #dcdcdc;
+    width: 60px;
+    height: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+  }
+  .left_cloud {
+    text-indent: -999px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    top: -5px;
+    left: 0px;
+    background: #dcdcdc;
+  }
+  .right_cloud {
+    text-indent: -999px;
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    border-radius: 20px;
+    top: -5px;
+    left: 15px;
+    background: #dcdcdc;
+  }
+  &:hover .sun {
+    animation: down 10s ease-in-out 2s infinite alternate;
+  }
+  &:hover .cloud {
+    animation: slide 9s linear 2s infinite alternate both;
   }
 }
 
+/*button*/
+.inner_button {
+  @include inner;
+}
+.button {
+  top: 50%;
+  left: 20px;
+  margin-top: -40px;
+  position: absolute;
+  width: 160px;
+  height: 80px;
+  line-height: 80px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+.button1 {
+  background: #333;
+  -webkit-transition: all 1s;
+  transition: all 3s;
+  &:hover {
+    background: #59b1eb;
+  }
+}
+@mixin set_button {
+  width: 156px;
+  height: 76px;
+  line-height: 76px;
+  border: 2px solid #333;
+}
+.button2 {
+  @include set_button;
+  background: #333;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  &:hover {
+    background: #fff;
+    border: 2px solid #59b1eb;
+    color: #59b1eb;
+  }
+}
+.button3 {
+  @include set_button;
+  position: relative;
+  z-index: 2;
+  &::before,
+  &::after {
+    content: '';
+    background: #333;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  &::before {
+    left: 0;
+  }
+  &::after {
+    right: 0;
+  }
+  &:hover {
+    &::before, &::after {
+      width: 0;
+    }
+  }
+}
+.button4 {
+  @include set_button;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  .before_btn
+  {
+    display: block;
+    position: absolute;
+    border-top: 38px solid #333;
+    border-left: 79px solid #333;
+    border-right: 79px solid transparent;
+    border-bottom: 38px solid transparent;
+    left: 0;
+    top: 0px;
+    z-index: -1;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  .after_btn
+  {
+    display: block;
+    position: absolute;
+    border-top: 38px solid transparent;
+    border-left: 79px solid transparent;
+    border-right: 79px solid #333;
+    border-bottom: 38px solid #333;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  &:hover .before_btn {
+    top: -38px;
+    left: -79px;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  &:hover .after_btn {
+    bottom: -38px;
+    right: -79px;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+}
+.button5 {
+  @include set_button;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  &::after {
+    content: '';
+    background: #333;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    left: -100%;
+    z-index: -1;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  &:hover {
+    &::after {
+      top: 0;
+      left: 0;
+      -webkit-transition: all 1s;
+      transition: all 1s;
+    }
+  }
+}
+.button6 {
+  @include set_button;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  &:hover {
+    &::after {
+      background: #333;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+    }
+  }
+}
+.button7 {
+  @include set_button;
+  position: relative;
+  z-index: 2;
+  -webkit-perspective: 200px;
+  perspective: 200px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    -webkit-transform-origin: left top;
+      transform-origin: left top;
+    -webkit-transform: rotateY(90deg);
+      transform: rotateY(90deg);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  &:hover {
+    &::after {
+      background: #333;
+      -webkit-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+      opacity: 1;
+    }
+  }
+}
+.button8 {
+  -webkit-perspective: 300px;
+  perspective: 300px;
+  position: relative;
+  span {
+    position: absolute;
+    @include set_button;
+    display: block;
+    -webkit-transition: all .5s;
+      transition: all .5s;
+      pointer-events: none;
+  }
+  span:nth-child(1) {
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
+    transform: rotateX(90deg);
+    -webkit-transform-origin: 50% 50% -30px;
+    -moz-transform-origin: 50% 50% -30px;
+    transform-origin: 50% 50% -30px;
+    opacity: 0;
+  }
+  span:nth-child(2) {
+    background-color: #fff;
+    color: #333;
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    -webkit-transform-origin: 50% 50% -30px;
+    -moz-transform-origin: 50% 50% -30px;
+    transform-origin: 50% 50% -30px;
+    opacity: 1;
+  }
+  &:hover span:nth-child(1) {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  &:hover span:nth-child(2) {
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+}
 
 #footer {
   width: 960px;
@@ -306,7 +630,7 @@ p {
   #header {
     width: 100%;
   }
-  #content {
+  .inner_content {
     width: auto;
     padding: 0 3%;
     height: auto;
